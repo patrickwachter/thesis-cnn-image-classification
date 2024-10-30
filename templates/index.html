@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Prediction Interface</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .container { max-width: 500px; margin: 0 auto; }
+        #result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chart Prediction</h1>
+        <input type="file" id="fileInput" accept="image/*">
+        <button onclick="uploadImage()">Predict</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function uploadImage() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Please select a file first.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('image', file);
+
+            fetch('/predictChart', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('result').innerText = 'Error: ' + data.error;
+                } else {
+                    const resultDiv = document.getElementById('result');
+                    resultDiv.innerHTML = `<p><strong>Prediction:</strong> ${data.prediction}</p>`;
+                    resultDiv.innerHTML += `<p><strong>Filename:</strong> ${data.filename}</p>`;
+                    resultDiv.innerHTML += `<p><strong>Confidence Scores:</strong></p>`;
+                    for (const [label, score] of Object.entries(data.predictions)) {
+                        resultDiv.innerHTML += `<p>${label}: ${score}%</p>`;
+                    }
+                }
+            })
+            .catch(error => {
+                document.getElementById('result').innerText = 'Error: ' + error;
+            });
+        }
+    </script>
+</body>
+</html>
