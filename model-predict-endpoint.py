@@ -40,4 +40,4 @@ def predictChart():
     return jsonify({'prediction': prediction, 'filename': file.filename, 'predictions': predictions_dict})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
