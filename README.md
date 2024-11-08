@@ -52,7 +52,7 @@ This Flask app provides an HTML interface for users to upload diagram images and
 
 2. Open your web browser and navigate to `http://127.0.0.1:5000/` or `http://localhost:5000/` to access the application.
 
-3. Upload an image of a diagram (either Line or Pie) using the provided form. Although all images types are accepted, the application was tested mostly with png. ![Alt text](form.png?raw=true "Form")
+3. Upload an image of a diagram (either Line or Pie) using the provided form. Although all images types are accepted, the application was tested mostly with png.
 
 5. Submit the form to get the prediction, which will return the predicted class and confidence percentages for both classes. 
 
