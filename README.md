@@ -87,10 +87,10 @@ This version of the app provides a `/predictChart` endpoint that can be called w
 ```json
 {
   "prediction": "Pie",
-  "filename": "example_diagram.png",
+  "filename": "image.png",
   "predictions": {
-    "Line": "40.12",
-    "Pie": "59.88"
+    "Line": "0.12",
+    "Pie": "99.88"
   }
 }
 ```
