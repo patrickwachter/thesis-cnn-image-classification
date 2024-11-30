@@ -20,6 +20,7 @@ Make sure you have the following installed:
 - Keras
 - NumPy
 - TensorFlow (Keras backend)
+- Pyplot
 
 ## Installation
 
